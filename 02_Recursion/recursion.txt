@@ -1,0 +1,9 @@
+Recursion: when a function call itself until a specified condition is met.
+and the condition is called Base Condition.
+
+A stack overflow occurs when a function repeatedly calls itself indefinitely, leading to multiple instances of the function being stored in memory without completion.
+
+Segmentation in Computing:
+Segmentation is a memory management technique in which a process's memory is divided into variable-sized segments rather than fixed-sized pages (as in paging). Each segment represents a logical division of the program, such as code, data, stack, and heap.
+
+A recursion tree is a visual representation of how recursive function calls are made and resolved.

@@ -1,0 +1,30 @@
+What is Time complexity ?
+:: Rate at which the time taken increases with respect to the input size. 
+time complexity != time taken
+time v/s input 	θ
+
+How it measure ?
+Big O notation is a mathematical notation that describes how a function grows as its input increases. 
+f(n)=O(g(n))
+
+Time complexty calculation rule:
+1.Always calculate in terms of worst case scenarios
+2. Avoid constants
+3. Avoid Lower values
+
+Big o nation : worst case upper bond
+thetha : Average complexity
+omega : lowest bond
+__________________________________________
+Space complexity -> Memory Space also measured in Big O
+space complexity is Auxilary space + Input space
+Auxilary space is the space that you take to solve the problem
+Input space is the space that you talk to store the Input
+
+
+c= a+b ; c is avxilary space and a and b is input space
+
+ex:  int a[N]; o[N]
+
+1sec = (10)^8 operation
+time limit 1 sec is roughly O(10^8)operation

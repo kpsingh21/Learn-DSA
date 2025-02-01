@@ -1,0 +1,5 @@
+Patterns Rule:
+1. for the outer loop count the no of lines
+2. for the inner loop ,focus on the columns and convert them somehow to the rows
+3. Whatever you printing print them inside the inner loops
+4. obeserve symmetry (optional)

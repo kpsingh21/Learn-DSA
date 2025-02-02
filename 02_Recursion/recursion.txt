@@ -7,3 +7,99 @@ Segmentation in Computing:
 Segmentation is a memory management technique in which a process's memory is divided into variable-sized segments rather than fixed-sized pages (as in paging). Each segment represents a logical division of the program, such as code, data, stack, and heap.
 
 A recursion tree is a visual representation of how recursive function calls are made and resolved.
+
+
+
+### **Difference Between Normal Recursion and Tail Recursion**
+In recursion, each function call is stored in the call stack until it finishes execution. **Tail recursion** is a special case where the recursive call is the **last operation** in the function, allowing some JavaScript engines to optimize it.
+
+---
+
+## **1️⃣ Your Original Recursion (Not Tail Recursive)**
+```js
+function printOnetoN(i, n) {
+    if (i > n) return;
+    process.stdout.write(i + "\n");  // Operation before recursion
+    printOnetoN(i + 1, n);  // Recursive call is NOT the last operation
+}
+printOnetoN(1, 6);
+```
+### 🔹 **How It Works (Call Stack)**
+Each recursive call stores an execution context in the call stack:
+```
+printOnetoN(1,6)  // prints 1 -> calls printOnetoN(2,6)
+printOnetoN(2,6)  // prints 2 -> calls printOnetoN(3,6)
+printOnetoN(3,6)  // prints 3 -> calls printOnetoN(4,6)
+printOnetoN(4,6)  // prints 4 -> calls printOnetoN(5,6)
+printOnetoN(5,6)  // prints 5 -> calls printOnetoN(6,6)
+printOnetoN(6,6)  // prints 6 -> calls printOnetoN(7,6)
+printOnetoN(7,6)  // Base case met, returns
+```
+- **Each function call is kept in the stack until it completes.**
+- **Stack depth = `O(N)` → Space Complexity = `O(N)`.**
+
+---
+
+## **2️⃣ Tail Recursion (Optimized)**
+```js
+function printOnetoN(i, n) {
+    if (i > n) return;
+    console.log(i); // Prints before calling recursion
+    return printOnetoN(i + 1, n); // Recursive call is the LAST operation
+}
+printOnetoN(1, 6);
+```
+### 🔹 **How It Works (Call Stack)**
+- The key difference is that **no extra work is needed after the recursive call returns**.
+- Some JavaScript engines (like V8) **optimize tail recursion** by reusing the same stack frame instead of creating a new one for each call.
+- **Space Complexity can be reduced to O(1) in optimized environments**.
+
+---
+
+## **3️⃣ Iterative Approach (Best for Large N)**
+Since JavaScript does **not fully optimize tail recursion**, an iterative approach is usually better:
+```js
+function printOnetoN(n) {
+    for (let i = 1; i <= n; i++) {
+        console.log(i);
+    }
+}
+printOnetoN(6);
+```
+### 🔹 **Why Iteration is Better?**
+✅ **Time Complexity = O(N)** (same as recursion)  
+✅ **Space Complexity = O(1)** (No extra function calls in the stack)  
+✅ **No risk of stack overflow** for large `N`  
+
+---
+
+### **🔹 Summary Table:**
+| Approach        | Time Complexity | Space Complexity | Call Stack Usage |
+|----------------|----------------|------------------|------------------|
+| Recursion      | O(N)           | O(N)             | High (Each call stored) |
+| Tail Recursion (Optimized) | O(N) | O(1) (If optimized) | Low |
+| Iteration (Loop) | O(N) | O(1) | None |
+
+---
+## **Final Verdict:**
+- **For small `N`**, recursion is fine.
+- **For large `N`**, prefer **iteration** to avoid stack overflow.
+- **If your JavaScript engine supports Tail Call Optimization (TCO)**, use **tail recursion** for better performance.
+
+
+3. Backtracking : A technique where the recursive call is made first, and execution happens after returning from recursion
+A technique where the recursive call is made first, and execution happens after returning from recursion
+printOneToN(5)
+ └── printOneToN(4)
+      └── printOneToN(3)
+           └── printOneToN(2)
+                └── printOneToN(1)
+                     └── printOneToN(0) // Base case hit, returns
+
+Now, function starts unwinding:
+printOneToN(1) → prints 1
+printOneToN(2) → prints 2
+printOneToN(3) → prints 3
+printOneToN(4) → prints 4
+printOneToN(5) → prints 5
+As here print line is after function execution so it will never execute before or till the function execution completed

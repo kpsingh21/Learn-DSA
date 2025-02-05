@@ -1,0 +1,21 @@
+The basic approach to counting the occurrences of a number involves looping through the given array for each query.
+This results in a time complexity of O(Q * N), where Q is the number of queries and N is the size of the array. However, for large arrays and multiple queries, this approach becomes inefficient.  
+
+Optimized Approach: Hashing 
+To improve efficiency, we use hashing, which allows us to pre-store and quickly fetch counts.  
+
+**Initial Hashing Array:**  
+Before processing, we initialize an array with zeroes:  
+Example: `[0, 0, 0, 0]`  
+Indexes: `0, 1, 2, 3`  
+
+Next, we iterate through the given array and increment the count at the corresponding index. This way, we preprocess the frequency of each number, enabling quick lookups for queries.
+
+
+https://takeuforward.org/hashing/hashing-maps-time-complexity-collisions-division-rule-of-hashing-strivers-a2z-dsa-course/
+
+
+
+//maximum array size :
+The maximum array size you can define without encountering a segmentation fault or out-of-memory (OOM) error 
+10⁹ (1 Billion) → Only C++ can handle this well.(In global context) in main only it support 10^6
